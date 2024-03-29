@@ -13,6 +13,6 @@ namespace AlunosApi.Contracts
         Task<Aluno> ObterAlunoPeloId(int Id);
         Task CriarAluno(Aluno aluno);
         Task EditarAluno(Aluno aluno);
-        Task RemoverAluno(Aluno aluno);
+        Task<dynamic> RemoverAluno(int Id);
     }
 }
