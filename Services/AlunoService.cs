@@ -55,10 +55,15 @@ namespace AlunosApi.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task RemoverAluno(Aluno aluno)
+        public async Task<dynamic> RemoverAluno(int Id)
         {
+            var aluno = await _context.Alunos.FindAsync(Id);
+            if (aluno is null)
+                throw new Exception("Não foi possível encontrar o aluno");
+            
             _context.Alunos.Remove(aluno);
             await _context.SaveChangesAsync();
+            return "Aluno removido com sucesso";
         }
     }
 }
